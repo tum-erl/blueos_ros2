@@ -1,0 +1,3 @@
+[submodule "bluerov2"]
+	path = ros2_ws/src/bluerov2
+	url = https://github.com/itskalvik/bluerov2
