@@ -1,6 +1,6 @@
-# BlueOS ROS extension
+# BlueOS ROS2 extension
 
-This extension makes possible to communicate with the vehicle via ROS
+This extension makes possible to communicate with the vehicle via ROS2
 
 To connect, you just need to run the following commands:
 ```sh

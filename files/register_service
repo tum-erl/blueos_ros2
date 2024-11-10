@@ -1,10 +1,9 @@
 {
-    "name": "ROS",
-    "description": "Robot Operating System (ROS) extension for BlueOS",
+    "name": "ROS2",
+    "description": "Robot Operating System 2 (ROS2) extension for BlueOS",
     "icon": "mdi-dots-grid",
-    "company": "Blue Robotics",
-    "version": "0.0.2",
+    "company": "itskalvik",
+    "version": "0.0.1",
     "new_page": true,
-    "webpage": "https://github.com/patrickelectric/blueos-extension-ros",
-    "api": "/v1.0/docs"
+    "webpage": "https://github.com/itskalvik/blueos-ros2",
 }
