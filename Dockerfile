@@ -33,7 +33,7 @@ COPY files/nginx.conf /etc/nginx/nginx.conf
 ADD files/start.sh /start.sh
 
 # Add docker configuration
-LABEL version="v0.0.1"
+LABEL version="0.0.1"
 LABEL permissions='{\
   "NetworkMode": "host",\
   "HostConfig": {\
@@ -52,7 +52,7 @@ LABEL authors='[\
 ]'
 LABEL company='{\
   "about": "",\
-  "name": "itskalvik",\
+  "name": "ItsKalvik",\
   "email": "itskalvik@gmail.com"\
 }'
 LABEL readme="https://raw.githubusercontent.com/itskalvik/blueos-ros2/master/README.md"

@@ -6,8 +6,8 @@ set -e
 LOCAL_BINARY_PATH="/usr/bin/ttyd"
 VERSION=1.7.3
 
-# By default we install aarch64
-REMOTE_BINARY_URL="https://github.com/tsl0922/ttyd/releases/download/${VERSION}/ttyd.aarch64"
+# By default we install armv7
+REMOTE_BINARY_URL="https://github.com/tsl0922/ttyd/releases/download/${VERSION}/ttyd.armhf"
 if [[ "$(uname -m)" == "x86_64"* ]]; then
     REMOTE_BINARY_URL="https://github.com/tsl0922/ttyd/releases/download/${VERSION}/ttyd.x86_64"
 fi
