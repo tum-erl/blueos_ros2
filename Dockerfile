@@ -21,7 +21,7 @@ RUN cd /home/ros2_ws/ \
     && ros2 run mavros install_geographiclib_datasets.sh \
     && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
 
-# Setup ttyd
+# Setup ttyd for web terminal interface
 ADD files/install-ttyd.sh /install-ttyd.sh
 RUN bash /install-ttyd.sh && rm /install-ttyd.sh
 COPY files/tmux.conf /etc/tmux.conf
