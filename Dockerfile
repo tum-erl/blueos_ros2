@@ -35,6 +35,7 @@ ADD files/start.sh /start.sh
 # Add docker configuration
 LABEL version="v0.0.1"
 LABEL permissions='{\
+  "NetworkMode": "host",\
   "HostConfig": {\
     "Binds": [\
       "/dev:/dev:rw",\
