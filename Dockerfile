@@ -62,4 +62,4 @@ LABEL tags='[\
   "robot"\
 ]'
 
-ENTRYPOINT [ "/ros_entrypoint.sh" ]
+ENTRYPOINT [ "/start.sh" ]
