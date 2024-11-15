@@ -38,8 +38,7 @@ LABEL permissions='{\
   "NetworkMode": "host",\
   "HostConfig": {\
     "Binds": [\
-      "/dev:/dev:rw",\
-      "ros2_ws/src:/home/ros2_ws/src:rw"\
+      "/dev:/dev:rw"\
     ],\
     "Privileged": true,\
     "NetworkMode": "host"\
