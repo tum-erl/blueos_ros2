@@ -3,7 +3,7 @@
     "description": "Robot Operating System 2 (ROS2) extension for BlueOS",
     "icon": "mdi-dots-grid",
     "company": "itskalvik",
-    "version": "0.0.1",
+    "version": "v0.0.1",
     "new_page": true,
     "webpage": "https://github.com/itskalvik/blueos-ros2",
 }
