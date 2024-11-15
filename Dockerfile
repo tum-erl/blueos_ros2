@@ -1,10 +1,15 @@
+ARG ROS_DISTRO=humble
 FROM ros:$ROS_DISTRO-ros-base
 
-RUN apt-get update \
+RUN rm /var/lib/dpkg/info/libc-bin.* \
+    && apt-get clean \
+    && apt-get update \
+    && apt-get -y install libc-bin \
     && apt-get install -q -y --no-install-recommends \
     tmux \
     nano \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
+    python3-dev python3-pip \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
@@ -18,12 +23,12 @@ RUN cd /home/ros2_ws/ \
     && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
 
 # Add docker configuration
-LABEL version="0.0.1"
+LABEL version="v0.0.1"
 LABEL permissions='{\
   "HostConfig": {\
     "Binds": [\
-      "/dev:/dev:rw",
-      "ros2_ws/src:/home/ros2_ws/src:rw",
+      "/dev:/dev:rw",\
+      "ros2_ws/src:/home/ros2_ws/src:rw"\
     ],\
     "Privileged": true,\
     "NetworkMode": "host"\
