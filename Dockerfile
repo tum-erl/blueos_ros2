@@ -6,8 +6,7 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get update \
     && apt-get -y install libc-bin \
     && apt-get install -q -y --no-install-recommends \
-    tmux \
-    nano \
+    tmux nano nginx wget netcat \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
     python3-dev python3-pip \
     && apt-get autoremove -y \
@@ -21,6 +20,17 @@ RUN cd /home/ros2_ws/ \
     && colcon build --symlink-install \
     && ros2 run mavros install_geographiclib_datasets.sh \
     && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
+
+# Setup ttyd
+ADD files/install-ttyd.sh /install-ttyd.sh
+RUN bash /install-ttyd.sh && rm /install-ttyd.sh
+COPY files/tmux.conf /etc/tmux.conf
+
+RUN mkdir -p /site
+COPY files/register_service /site/register_service
+COPY files/nginx.conf /etc/nginx/nginx.conf
+
+ADD files/start.sh /start.sh
 
 # Add docker configuration
 LABEL version="v0.0.1"
