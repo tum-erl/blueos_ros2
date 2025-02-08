@@ -8,6 +8,7 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get install -q -y --no-install-recommends \
     tmux nano nginx wget netcat \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
+    ros-${ROS_DISTRO}-foxglove-bridge \
     python3-dev python3-pip \
     && apt-get autoremove -y \
     && apt-get clean -y \
