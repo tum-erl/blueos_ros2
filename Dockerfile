@@ -8,7 +8,9 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get install -q -y --no-install-recommends \
     tmux nano nginx wget netcat \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
-    ros-${ROS_DISTRO}-foxglove-bridge \
+    ros-${ROS_DISTRO}-nav-msgs \
+    ros-${ROS_DISTRO}-sensor-msgs \
+    ros-${ROS_DISTRO}-geographic-msgs \
     python3-dev python3-pip \
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -17,10 +19,14 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
 
 COPY ros2_ws /home/ros2_ws
 RUN cd /home/ros2_ws/ \
+    && python3 -m pip install --no-cache-dir -r src/mavros_control/requirements.txt \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && colcon build --symlink-install \
     && ros2 run mavros install_geographiclib_datasets.sh \
     && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
+
+# Setup environment variables to configure mavros_control
+ENV NAVIGATION_TYPE=0 FOXGLOVE=True
 
 # Setup ttyd for web terminal interface
 ADD files/install-ttyd.sh /install-ttyd.sh
@@ -34,16 +40,21 @@ COPY files/nginx.conf /etc/nginx/nginx.conf
 ADD files/start.sh /start.sh
 
 # Add docker configuration
-LABEL version="0.0.1"
+LABEL version="0.0.2"
 LABEL permissions='{\
   "NetworkMode": "host",\
   "HostConfig": {\
     "Binds": [\
-      "/dev:/dev:rw"\
+      "/dev:/dev:rw",\
+      "/usr/blueos/extensions/ros2/:/home/:rw"\
     ],\
     "Privileged": true,\
     "NetworkMode": "host"\
-  }\
+  },\
+  "Env": [\
+    "NAVIGATION_TYPE=0" \
+    "FOXGLOVE=False", \
+  ]\
 }'
 LABEL authors='[\
   {\
@@ -63,4 +74,6 @@ LABEL tags='[\
   "robot"\
 ]'
 
+# Keep bash alive even if there is an error
+RUN echo "set +e" >> ~/.bashrc
 ENTRYPOINT [ "/start.sh" ]
