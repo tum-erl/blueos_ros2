@@ -41,7 +41,7 @@ LABEL permissions='{\
   "HostConfig": {\
     "Binds": [\
       "/dev:/dev:rw",\
-      "/usr/blueos/extensions/ros2/:/home/:rw"\
+      "/usr/blueos/extensions/ros2/:/home/persistent_ws/:rw"\
     ],\
     "Privileged": true,\
     "NetworkMode": "host"\

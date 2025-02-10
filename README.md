@@ -7,7 +7,7 @@ The extension includes the following packages:
 - [mavros_control](https://github.com/itskalvik/mavros_control): Includes a python script to control the vehicle using GPS-based waypoints (BlueBoat) and RC-control (BlueROV2) via mavros
 - [Foxglove ](https://docs.foxglove.dev/docs): Web-based RViz for visualizing ROS2 data
 
-The extension also mounts the following folder on the computer running BlueOS to the ```/home/``` directory in the extension's Docker container, which can be used to store files that need to persist across reboots, such as a ROS2 workspace with custom code:
+The extension also mounts the following folder on the computer running BlueOS to the ```/home/persistent_ws/``` directory in the extension's Docker container, which can be used to store files that need to persist across reboots, such as a ROS2 workspace with custom code:
 ```
 /usr/blueos/extensions/ros2/
 ```
