@@ -1,15 +1,10 @@
 ARG ROS_DISTRO=humble
 FROM ros:$ROS_DISTRO-ros-base
 
-RUN rm /var/lib/dpkg/info/libc-bin.* \
-    && apt-get clean \
-    && apt-get update \
-    && apt-get -y install libc-bin \
+RUN apt-get update \
     && apt-get install -q -y --no-install-recommends \
     tmux nano nginx wget netcat \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
-    ros-${ROS_DISTRO}-nav-msgs \
-    ros-${ROS_DISTRO}-sensor-msgs \
     ros-${ROS_DISTRO}-geographic-msgs \
     python3-dev python3-pip \
     && apt-get autoremove -y \
@@ -52,8 +47,8 @@ LABEL permissions='{\
     "NetworkMode": "host"\
   },\
   "Env": [\
-    "NAVIGATION_TYPE=0" \
-    "FOXGLOVE=False", \
+    "NAVIGATION_TYPE=0", \
+    "FOXGLOVE=False" \
   ]\
 }'
 LABEL authors='[\
