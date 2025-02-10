@@ -39,3 +39,19 @@ The parameters reset to their default values after rebooting. They can be made p
 
 ## FAQ
 To control the vehicle using RC-control, please ensure that the ```SYSID_MYGCS``` parameter is set to ```1``` using BlueOS. Note that once the ```SYSID_MYGCS``` is cnahged, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```.
+
+## Building the Docker Container Locally
+First, setup buildx to build the containers for both arm64 and amd64 platforms: 
+```bash
+docker buildx create --name multi-arch \
+  --platform "linux/arm64,linux/amd64" \
+  --driver "docker-container"
+docker buildx use multi-arch
+```
+
+Next, clone the repo and build the container, replace ```<tag>``` with your own tag:
+```bash
+git clone --recurse-submodules https://github.com/itskalvik/blueos-ros2
+cd blueos-ros2
+docker build --platform linux/amd64,linux/arm64 -t <tag> . --push
+```
