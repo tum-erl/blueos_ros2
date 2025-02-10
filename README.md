@@ -30,3 +30,6 @@ The parameters reset to their default values after rebooting. They can be made p
 * ```FOXGLOVE``` (```default: True```):
     - Starts Foxglove bridge when set to ```True```
     - You can access it from a web browser at https://app.foxglove.dev/. Use the open connection feature and change the address from localhost to the IP address of the vehicle
+
+## FAQ
+To control the vehicle using RC-control, please ensure that the ```SYSID_MYGCS``` parameter is set to ```1``` using BlueOS. Note that once the ```SYSID_MYGCS``` is cnahged, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```.
