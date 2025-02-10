@@ -1,16 +1,22 @@
-# BlueOS ROS2 Extension
+# [BlueOS ROS2 Extension](https://github.com/itskalvik/blueos-ros2)
 
-This extension makes it possible to communicate/control a  BlueROV2 or a BlueBoat via [ROS2](https://github.com/ros2)
+This extension enables controlling an ArduPilot-based vehicle (BlueBoat, BlueROV) via [ROS2](https://github.com/ros2)
 
 The extension includes the following packages:
-- [MAVROS](https://github.com/mavlink/mavros): Includes a launch file to communicate with the vehicle
+- [MAVROS](https://github.com/mavlink/mavros): Includes a launch file to communicate with the flight controller (vehicle)
 - [mavros_control](https://github.com/itskalvik/mavros_control): Includes a python script to control the vehicle using GPS-based waypoints (BlueBoat) and RC-control (BlueROV2) via mavros
 - [Foxglove ](https://docs.foxglove.dev/docs): Web-based RViz for visualizing ROS2 data
 
-The extension also mounts the following folder on the computer running BlueOS to the ```/home/persistent_ws/``` directory in the extension's Docker container, which can be used to store files that need to persist across reboots, such as a ROS2 workspace with custom code:
+The extension also mounts the following folder on the computer running [BlueOS](https://blueos.cloud/) to the ```/home/persistent_ws/``` directory in the extension's Docker container, which can be used to store files that need to persist across reboots, such as a ROS2 workspace with custom code:
 ```
 /usr/blueos/extensions/ros2/
 ```
+
+## Getting Started
+- The [mavros_control](https://github.com/itskalvik/mavros_control) package includes a demo launch file that starts the ```controller``` node. The node arms the vehicle, moves it, and then disarms it. Run the following command in the extension's terminal to start it:
+  ```
+  ros2 launch mavros_control demo.launch.py
+  ```
 
 ## Parameters
 You can control the following extension parameters by running the following command in the terminal provided by the ros2 extension:

@@ -14,9 +14,9 @@ tmux select-pane -t 0
 tmux split-window -h
 
 tmux send-keys -t 0 "ros2 launch mavros_control base.launch.py" Enter
-tmux send-keys -t 1 Enter
-tmux send-keys -t 2 Enter
-tmux send-keys -t 3 Enter
+tmux send-keys -t 1 
+tmux send-keys -t 2 
+tmux send-keys -t 3 
 
 function create_service {
     tmux new -d -s "$1" || true
