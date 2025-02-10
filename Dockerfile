@@ -18,6 +18,7 @@ RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && colcon build --symlink-install \
     && ros2 run mavros install_geographiclib_datasets.sh \
+    && echo "source /ros_entrypoint.sh" >> ~/.bashrc \
     && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
 
 # Setup environment variables to configure mavros_control
