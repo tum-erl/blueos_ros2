@@ -14,6 +14,11 @@ The extension also mounts the following folder on the computer running [BlueOS](
 
 ```/usr/blueos/extensions/ros2/``` -> ```/home/persistent_ws/```
 
+# Setup
+This extension works only on 64-bit version of [BlueOS](https://github.com/bluerobotics/BlueOS). You can get the 64-bit image of BlueOS for Raspberry Pi from [here](https://github.com/bluerobotics/BlueOS/releases/download/1.4.0-beta.14/BlueOS-raspberry-linux-arm64-v8-bookworm-pi5.zip).
+
+The ROS2 extension extension can then be installed from the BlueOS app store. 
+
 ## Getting Started
 The [mavros_control](https://github.com/itskalvik/mavros_control) package includes a demo launch file that starts the ```controller``` node. The node arms the vehicle, moves it, and then disarms it. Run the following command in the extension's terminal to start it:
 
