@@ -64,4 +64,10 @@ docker build --platform linux/amd64,linux/arm64 -t <tag> . --push
 ```
 
 ## FAQ
-To control the vehicle using RC-control, please ensure that the ```SYSID_MYGCS``` parameter is set to ```1``` through the BlueOS Autopilot Parameters Tab. Note that once the ```SYSID_MYGCS``` is cnahged, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```.
+To control the vehicle using RC-control, please ensure that the ```SYSID_MYGCS``` parameter is set to ```1``` through the BlueOS Autopilot Parameters Tab.
+You can also update ```SYSID_MYGCS``` from the ROS2 extension's terminal by runnning the following command:
+```
+ros2 param set /mavros/param SYSID_MYGCS 1
+```
+
+Note that once the ```SYSID_MYGCS``` is changed, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```
