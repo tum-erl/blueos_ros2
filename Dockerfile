@@ -13,17 +13,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --no-cache-dir setuptools pip packaging -U
 
-COPY ros2_ws /home/ros2_ws
-RUN cd /home/ros2_ws/ \
-    && python3 -m pip install --no-cache-dir -r src/mavros_control/requirements.txt \
-    && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    && colcon build --symlink-install \
+RUN . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && ros2 run mavros install_geographiclib_datasets.sh \
-    && echo "source /ros_entrypoint.sh" >> ~/.bashrc \
-    && echo "source /home/ros2_ws/install/setup.sh " >> ~/.bashrc
-
-# Setup environment variables to configure mavros_control
-ENV NAVIGATION_TYPE=0 FOXGLOVE=True
+    && echo "source /ros_entrypoint.sh" >> ~/.bashrc
 
 # Setup ttyd for web terminal interface
 ADD files/install-ttyd.sh /install-ttyd.sh
