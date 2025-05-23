@@ -1,4 +1,4 @@
-# [BlueOS ROS2 Extension](https://github.com/itskalvik/blueos-ros2)
+# BlueOS ROS2 Extension
 
 This extension enables controlling an ArduPilot-based vehicle (BlueBoat, BlueROV) via [ROS2](https://github.com/ros2)
 
