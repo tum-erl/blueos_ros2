@@ -7,11 +7,19 @@ RUN apt-get update \
     ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs \
     ros-${ROS_DISTRO}-geographic-msgs \
     ros-${ROS_DISTRO}-foxglove-bridge \
+    ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
     python3-dev python3-pip \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --no-cache-dir setuptools pip packaging -U
+
+# Set up ROS2 environment
+COPY cyclonedds.xml /root/cyclonedds.xml
+
+ENV CYCLONEDDS_URI=file:///root/cyclonedds.xml \
+    ROS_DOMAIN_ID=42 \
+    RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 RUN . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && ros2 run mavros install_geographiclib_datasets.sh \
@@ -47,14 +55,14 @@ LABEL permissions='{\
 }'
 LABEL authors='[\
   {\
-    "name": "Kalvik Jakkala",\
-    "email": "itskalvik@gmail.com"\
+    "name": "Marko Alten",\
+    "email": "marko.alten@tum.de"\
   }\
 ]'
 LABEL company='{\
   "about": "",\
-  "name": "ItsKalvik",\
-  "email": "itskalvik@gmail.com"\
+  "name": "Technical University of Munich | Chair of Robotics and System Intelligence",\
+  "email": ""\
 }'
 LABEL readme="https://raw.githubusercontent.com/itskalvik/blueos-ros2/master/README.md"
 LABEL type="other"

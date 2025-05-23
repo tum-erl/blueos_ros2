@@ -60,7 +60,7 @@ Next, clone the repo and build the container, replace ```<tag>``` with your own 
 ```bash
 git clone --recurse-submodules https://github.com/itskalvik/blueos-ros2
 cd blueos-ros2
-docker build --platform linux/amd64,linux/arm64 -t <tag> . --push
+docker buildx build --platform linux/amd64,linux/arm64 -t <your_docker_hub_name>/blueos_ros2:<version> . --push
 ```
 
 ## FAQ
@@ -71,3 +71,16 @@ ros2 param set /mavros/param SYSID_MYGCS 1
 ```
 
 Note that once the ```SYSID_MYGCS``` is changed, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```
+
+## BlueOS Settings
+{
+  "NetworkMode": "host",
+  "HostConfig": {
+    "Binds": [
+      "/dev:/dev:rw",
+      "/usr/blueos/extensions/ros2/:/home/persistent_ws/:rw"
+    ],
+    "Privileged": true,
+    "NetworkMode": "host"
+  }
+}
