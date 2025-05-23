@@ -64,7 +64,7 @@ LABEL company='{\
   "name": "Technical University of Munich | Chair of Robotics and System Intelligence",\
   "email": ""\
 }'
-LABEL readme="https://raw.githubusercontent.com/itskalvik/blueos-ros2/master/README.md"
+LABEL readme="https://raw.githubusercontent.com/tum-erl/blueos-ros2/refs/heads/main/README.md"
 LABEL type="other"
 LABEL tags='[\
   "ros2",\

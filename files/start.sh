@@ -13,7 +13,7 @@ tmux split-window -h
 tmux select-pane -t 0
 tmux split-window -h
 
-tmux send-keys -t 0
+tmux send-keys -t 0 "ros2 launch mavros apm.launch fcu_url:=tcp://0.0.0.0:5777@" Enter
 tmux send-keys -t 1 
 tmux send-keys -t 2 
 tmux send-keys -t 3 
