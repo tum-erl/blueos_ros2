@@ -56,6 +56,11 @@ ros2 param set /mavros/param SYSID_MYGCS 1
 Note that once the ```SYSID_MYGCS``` is changed, you won't be able to control the vehicle using Cockpit anymore until you reset the parameter to its default value: ```255```
 
 ## BlueOS Settings
+Extension Identifier: TUM.ERL
+Extension Name: ROS2
+Docker image: 0401marko/blueos_ros2
+Docker tag: 0.0.1 (make sure to use the latest)
+
 {
   "NetworkMode": "host",
   "HostConfig": {
