@@ -14,7 +14,7 @@ tmux select-pane -t 0
 tmux split-window -h
 
 tmux send-keys -t 0 "ros2 launch mavros apm.launch fcu_url:=tcp://0.0.0.0:5777@" Enter
-tmux send-keys -t 1 
+tmux send-keys -t 1 "sleep 10 && ros2 service call /mavros/set_stream_rate mavros_msgs/srv/StreamRate '{stream_id: 10, message_rate: 200, on_off: true}'" Enter
 tmux send-keys -t 2 
 tmux send-keys -t 3 
 
