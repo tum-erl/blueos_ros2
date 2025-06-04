@@ -79,3 +79,5 @@ Docker tag: 0.0.1 (make sure to use the latest)</br>
   ]
 }
 ```
+
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/library/ubuntu/latest)
