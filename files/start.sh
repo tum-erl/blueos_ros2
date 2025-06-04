@@ -13,21 +13,15 @@ tmux split-window -h
 tmux select-pane -t 0
 tmux split-window -h
 
-# Launch mavros in pane 0
-tmux send-keys -t 0 "ros2 launch mavros apm.launch fcu_url:=tcp://0.0.0.0:5777@" Enter
-
-# Wait 10 seconds then call the service in pane 1
-tmux send-keys -t 1 "sleep 10 && ros2 service call /mavros/set_stream_rate mavros_msgs/srv/StreamRate '{stream_id: 10, message_rate: 200, on_off: true}'" Enter
-
-# Print "Hello World" every 10 seconds in pane 2
-tmux send-keys -t 2 'while true; do echo "Hello World"; sleep 10; done' Enter
-
-# Pane 3 is optional; left blank
-tmux send-keys -t 3 ""  # Optional: add something here if needed
+tmux send-keys -t 0 "ros2 launch mavros apm.launch fcu_url:=${FCU_URL} namespace:=${BOAT_NAME}/mavros" Enter
+tmux send-keys -t 1 "sleep 10 && ros2 service call /mavros/set_stream_rate mavros_msgs/srv/StreamRate '{stream_id: 10, message_rate: ${IMU_STREAMRATE}, on_off: true}'" Enter
+tmux send-keys -t 2 
+tmux send-keys -t 3 
 
 function create_service {
     tmux new -d -s "$1" || true
     SESSION_NAME="$1:0"
+    # Set all necessary environment variables for the new tmux session
     for NAME in $(compgen -v | grep MAV_); do
         VALUE=${!NAME}
         tmux setenv -t $SESSION_NAME -g $NAME $VALUE

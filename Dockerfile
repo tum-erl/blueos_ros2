@@ -37,7 +37,7 @@ COPY files/nginx.conf /etc/nginx/nginx.conf
 ADD files/start.sh /start.sh
 
 # Add docker configuration
-LABEL version="0.0.2"
+LABEL version="0.0.3"
 LABEL permissions='{\
   "NetworkMode": "host",\
   "HostConfig": {\
@@ -49,8 +49,9 @@ LABEL permissions='{\
     "NetworkMode": "host"\
   },\
   "Env": [\
-    "NAVIGATION_TYPE=0", \
-    "FOXGLOVE=True" \
+    "BOAT_NAME=blueboat", \
+    "FCU_URL=tcp://0.0.0.0:5777@", \
+    "IMU_STREAMRATE=200" \
   ]\
 }'
 LABEL authors='[\

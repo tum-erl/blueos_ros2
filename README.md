@@ -72,6 +72,7 @@ Docker tag: 0.0.1 (make sure to use the latest)</br>
     "NetworkMode": "host"
   },
   "Env": [
+    "BOAT_NAME=blueboat",
     "FCU_URL=tcp://0.0.0.0:5777@",
     "IMU_STREAMRATE=200"
   ]
