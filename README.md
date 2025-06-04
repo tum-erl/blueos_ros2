@@ -61,6 +61,7 @@ Extension Name: ROS2</br>
 Docker image: 0401marko/blueos_ros2</br>
 Docker tag: 0.0.1 (make sure to use the latest)</br>
 
+```json
 {
   "NetworkMode": "host",
   "HostConfig": {
@@ -77,3 +78,4 @@ Docker tag: 0.0.1 (make sure to use the latest)</br>
     "IMU_STREAMRATE=200"
   ]
 }
+```
