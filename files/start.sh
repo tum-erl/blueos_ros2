@@ -15,7 +15,7 @@ tmux split-window -h
 
 tmux send-keys -t 0 "ros2 launch mavros apm.launch fcu_url:=${FCU_URL} namespace:=${BOAT_NAME}/mavros" Enter
 tmux send-keys -t 1 "sleep 10 && ros2 service call /${BOAT_NAME}/mavros/set_stream_rate mavros_msgs/srv/StreamRate '{stream_id: 10, message_rate: ${IMU_STREAMRATE}, on_off: true}'" Enter
-tmux send-keys -t 2 
+tmux send-keys -t 2 "sleep 15 && ros2 service call /${BOAT_NAME}/mavros/set_stream_rate mavros_msgs/srv/StreamRate '{stream_id: 3, message_rate: ${RC_STREAMRATE}, on_off: true}'" Enter
 tmux send-keys -t 3 
 
 function create_service {

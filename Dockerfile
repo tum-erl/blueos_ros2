@@ -51,7 +51,8 @@ LABEL permissions='{\
   "Env": [\
     "BOAT_NAME=blueboat", \
     "FCU_URL=tcp://0.0.0.0:5777@", \
-    "IMU_STREAMRATE=200" \
+    "IMU_STREAMRATE=200", \
+    "RC_STREAMRATE=50" \
   ]\
 }'
 LABEL authors='[\
